@@ -1,7 +1,7 @@
 import { describe, expect, test, beforeAll } from "@jest/globals";
 import { PixelComponent } from "./pixel.component";
 import { bootstrap } from "@boots-edu/webz";
-import { Color } from "./color";
+import { Color } from "../color";
 
 describe("PixelComponent", () => {
     let component: PixelComponent | undefined = undefined;

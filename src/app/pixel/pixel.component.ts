@@ -2,18 +2,14 @@ import { WebzComponent } from "@boots-edu/webz";
 import { BindStyle, BindStyleToNumberAppendPx } from "@boots-edu/webz";
 import html from "./pixel.component.html";
 import css from "./pixel.component.css";
-import { Color } from "./color";
+import { Color } from "../color";
 
 export class PixelComponent extends WebzComponent {
     //private color: Color;
     @BindStyle("pixel", "backgroundColor", (color: Color) => color.toString())
-    @BindStyleToNumberAppendPx("pixel", "width", (size: number) =>
-        size.toString(),
-    )
-    @BindStyleToNumberAppendPx("pixel", "height", (size: number) =>
-        size.toString(),
-    )
     color: Color = new Color(255, 255, 255);
+    @BindStyleToNumberAppendPx("pixel", "width")
+    @BindStyleToNumberAppendPx("pixel", "height")
     size: number = 10;
     private x: number;
     private y: number;
