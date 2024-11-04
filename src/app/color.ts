@@ -10,7 +10,7 @@ export class Color {
     }
 
     toString(): string {
-        return "rgb(" + this.red + ", " + this.green + ", " + this.blue + ")";
+        return "rgb(" + this.red + "," + this.green + "," + this.blue + ")";
     }
     asNumbers(): number[] {
         let temp: number[] = [];
