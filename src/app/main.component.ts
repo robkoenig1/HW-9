@@ -2,9 +2,10 @@ import html from "./main.component.html";
 import css from "./main.component.css";
 import { WebzComponent } from "@boots-edu/webz";
 import { PixelComponent } from "./pixel/pixel.component";
+import { ClickablePixelComponent } from "./pixel/clickable-pixel.component";
 import { ToolbarComponent } from "./toolbar/toolbar.component";
 import { GridComponent } from "./grid/grid.component";
-import { Color } from "./color";
+import { Color, convertPalette } from "./color";
 
 /**
  * @description MainComponent is the main component of the app
@@ -13,7 +14,13 @@ import { Color } from "./color";
  */
 
 export class MainComponent extends WebzComponent {
-    public DEFAULT_IMAGE: Color[][] = [[]];
+    public DEFAULT_IMAGE: Color[][] = convertPalette([
+        [5, 5, 5, 5, 5],
+        [5, 0, 5, 0, 5],
+        [5, 5, 5, 5, 5],
+        [5, 0, 5, 0, 5],
+        [5, 0, 0, 0, 5],
+    ]);
 
     constructor() {
         super(html, css);
@@ -25,12 +32,21 @@ export class MainComponent extends WebzComponent {
         this.addComponent(testPixel);
         let preview = new GridComponent(1, 32);
         this.addComponent(preview);
-        this.DEFAULT_IMAGE = convertPalette([
-            [5, 5, 5, 5, 5],
-            [5, 0, 5, 0, 5],
-            [5, 5, 5, 5, 5],
-            [5, 0, 5, 0, 5],
-            [5, 0, 0, 0, 5],
-        ]);
+        preview.loadImage(this.DEFAULT_IMAGE);
+        let editor = new GridComponent(1, 32);
+        this.addComponent(editor);
+        editor.loadImage(this.DEFAULT_IMAGE);
+        editor.onPixelClick.subscribe((pixel: ClickablePixelComponent) => {
+            editor.setColorAt(
+                pixel.getX(),
+                pixel.getY(),
+                toolbar.getActiveColor(),
+            );
+            preview.setColorAt(
+                pixel.getX(),
+                pixel.getY(),
+                toolbar.getActiveColor(),
+            );
+        });
     }
 }
