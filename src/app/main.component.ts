@@ -24,16 +24,16 @@ export class MainComponent extends WebzComponent {
 
     constructor() {
         super(html, css);
-        let toolbar = new ToolbarComponent();
+        const toolbar = new ToolbarComponent();
         this.addComponent(toolbar);
-        let testPixel = new PixelComponent(0, 0);
-        testPixel.setColor(new Color(255, 0, 0)); // Red
-        testPixel.setSize(50); // 50px by 50px
-        this.addComponent(testPixel);
-        let preview = new GridComponent(1, 32);
+        //const testPixel = new PixelComponent(0, 0);
+        //testPixel.setColor(new Color(255, 0, 0)); // Red
+        //testPixel.setSize(50); // 50px by 50px
+        //this.addComponent(testPixel);
+        const preview = new GridComponent(1, 32);
         this.addComponent(preview);
         preview.loadImage(this.DEFAULT_IMAGE);
-        let editor = new GridComponent(1, 32);
+        const editor = new GridComponent(1, 32);
         this.addComponent(editor);
         editor.loadImage(this.DEFAULT_IMAGE);
         editor.onPixelClick.subscribe((pixel: ClickablePixelComponent) => {
