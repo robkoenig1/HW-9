@@ -14,7 +14,7 @@ import { Color, convertPalette } from "./color";
  */
 
 export class MainComponent extends WebzComponent {
-    public Preview: GridComponent;
+    public preview: GridComponent;
     public toolbar: ToolbarComponent;
     public editor: GridComponent;
     public DEFAULT_IMAGE: Color[][] = convertPalette([
@@ -31,9 +31,9 @@ export class MainComponent extends WebzComponent {
         //testPixel.setColor(new Color(255, 0, 0)); // Red
         //testPixel.setSize(50); // 50px by 50px
         //this.addComponent(testPixel);
-        this.Preview = new GridComponent(1, 32);
-        this.addComponent(this.Preview);
-        this.Preview.loadImage(this.DEFAULT_IMAGE);
+        this.preview = new GridComponent(1, 32);
+        this.addComponent(this.preview);
+        this.preview.loadImage(this.DEFAULT_IMAGE);
         this.toolbar = new ToolbarComponent();
         this.addComponent(this.toolbar);
         this.editor = new GridComponent(1, 32);
@@ -45,7 +45,7 @@ export class MainComponent extends WebzComponent {
                 pixel.getY(),
                 this.toolbar.getActiveColor(),
             );
-            this.Preview.setColorAt(
+            this.preview.setColorAt(
                 pixel.getX(),
                 pixel.getY(),
                 this.toolbar.getActiveColor(),
