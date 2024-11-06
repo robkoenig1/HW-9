@@ -14,6 +14,9 @@ import { Color, convertPalette } from "./color";
  */
 
 export class MainComponent extends WebzComponent {
+    public preview: GridComponent;
+    public toolbar: ToolbarComponent;
+    public editor: GridComponent;
     public DEFAULT_IMAGE: Color[][] = convertPalette([
         [5, 5, 5, 5, 5],
         [5, 0, 5, 0, 5],
@@ -28,24 +31,24 @@ export class MainComponent extends WebzComponent {
         //testPixel.setColor(new Color(255, 0, 0)); // Red
         //testPixel.setSize(50); // 50px by 50px
         //this.addComponent(testPixel);
-        const preview = new GridComponent(1, 32);
-        this.addComponent(preview);
-        preview.loadImage(this.DEFAULT_IMAGE);
-        const toolbar = new ToolbarComponent();
-        this.addComponent(toolbar);
-        const editor = new GridComponent(1, 32);
-        this.addComponent(editor);
-        editor.loadImage(this.DEFAULT_IMAGE);
-        editor.onPixelClick.subscribe((pixel: ClickablePixelComponent) => {
-            editor.setColorAt(
+        this.preview = new GridComponent(1, 32);
+        this.addComponent(this.preview);
+        this.preview.loadImage(this.DEFAULT_IMAGE);
+        this.toolbar = new ToolbarComponent();
+        this.addComponent(this.toolbar);
+        this.editor = new GridComponent(1, 32);
+        this.addComponent(this.editor);
+        this.editor.loadImage(this.DEFAULT_IMAGE);
+        this.editor.onPixelClick.subscribe((pixel: ClickablePixelComponent) => {
+            this.editor.setColorAt(
                 pixel.getX(),
                 pixel.getY(),
-                toolbar.getActiveColor(),
+                this.toolbar.getActiveColor(),
             );
-            preview.setColorAt(
+            this.preview.setColorAt(
                 pixel.getX(),
                 pixel.getY(),
-                toolbar.getActiveColor(),
+                this.toolbar.getActiveColor(),
             );
         });
     }
