@@ -42,7 +42,6 @@ export class GridComponent extends WebzComponent {
     }
 
     public loadImage(input: Color[][]): void {
-        this.clearPixels();
         this.pixels = [];
         for (let i: number = 0; i < input.length; i++) {
             let inputRow: PixelComponent[] = [];
@@ -54,6 +53,7 @@ export class GridComponent extends WebzComponent {
         }
         let rows = input.length;
         this.size = rows * (this.zoom + this.gap) - this.gap;
+        this.clearPixels();
     }
 
     public clearPixels(): void {

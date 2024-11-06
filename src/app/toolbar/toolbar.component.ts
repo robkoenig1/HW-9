@@ -5,15 +5,16 @@ import { ClickablePixelComponent } from "../pixel/clickable-pixel.component";
 import html from "./toolbar.component.html";
 import css from "./toolbar.component.css";
 
-export const DEFAULT_COLOR: Color = makeColor(0);
+//export let DEFAULT_COLOR: Color = makeColor(0);
 
 export class ToolbarComponent extends WebzComponent {
     private active: PixelComponent = new PixelComponent(0, 0);
     private swatches: PixelComponent[] = [];
+    public DEFAULT_COLOR: Color = makeColor(0);
     constructor() {
         super(html, css);
         this.active.setSize(30);
-        this.active.setColor(DEFAULT_COLOR);
+        this.active.setColor(this.DEFAULT_COLOR);
         this.addComponent(this.active);
         for (let i = 0; i < PALETTE.length; i++) {
             let swatch = new ClickablePixelComponent(0, i);
