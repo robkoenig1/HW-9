@@ -1,7 +1,7 @@
 import html from "./main.component.html";
 import css from "./main.component.css";
 import { WebzComponent } from "@boots-edu/webz";
-import { PixelComponent } from "./pixel/pixel.component";
+//import { PixelComponent } from "./pixel/pixel.component";
 import { ClickablePixelComponent } from "./pixel/clickable-pixel.component";
 import { ToolbarComponent } from "./toolbar/toolbar.component";
 import { GridComponent } from "./grid/grid.component";
