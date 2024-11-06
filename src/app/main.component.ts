@@ -45,7 +45,7 @@ export class MainComponent extends WebzComponent {
                 pixel.getY(),
                 this.toolbar.getActiveColor(),
             );
-            this.preview.setColorAt(
+            this.Preview.setColorAt(
                 pixel.getX(),
                 pixel.getY(),
                 this.toolbar.getActiveColor(),
